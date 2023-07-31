@@ -68,8 +68,16 @@ struct ContentView: View {
                     Image(systemName: "checkmark.shield.fill")
                         .font(.system(size: 60))
                         .scaleEffect(HPress ? 1 : 0)
-
+                        .animation(.easeInOut, value: HPress)
                 }
+                .overlay(content: {
+                    Circle().trim(from: 0, to: topG ? 1 : 0)
+                        .stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                        .rotation(.degrees(-90))
+                })
+                .animation(.easeInOut.speed(0.3), value: topG)
+                .foregroundColor(.black.opacity(0.7))
+
                 
             }
             .scaleEffect(topG ? 1.2 : 1)
