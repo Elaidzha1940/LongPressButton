@@ -44,9 +44,7 @@ struct ContentView: View {
                         .foregroundStyle(LinearGradient(gradient: Gradient(colors: [Color.black.opacity(0.01), .white]), startPoint: .topLeading, endPoint: .bottomTrailing))
                         .blur(radius: 3)
                 }
-                ZStack {
-                    
-                }
+            
                 ZStack {
                     Circle()
                         .frame(width: 90, height: 90)
@@ -56,6 +54,18 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(width: 90, height: 90)
                         .cornerRadius(50)
+                        .scaleEffect(HPress ? 0 : 1)
+                    
+                    Image("print1")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 90, height: 90)
+                        .cornerRadius(50)
+                        .scaleEffect(HPress ? 0 : 1)
+                        .clipShape(Circle().offset(y: topG ? 0 : 120))
+                        .animation(.easeInOut.speed(0.3), value: topG)
+
+
                 }
                 
             }
