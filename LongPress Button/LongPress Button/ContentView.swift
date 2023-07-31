@@ -55,7 +55,7 @@ struct ContentView: View {
                         .frame(width: 90, height: 90)
                         .cornerRadius(50)
                         .scaleEffect(HPress ? 0 : 1)
-                    
+        
                     Image("print1")
                         .resizable()
                         .scaledToFit()
@@ -64,7 +64,10 @@ struct ContentView: View {
                         .scaleEffect(HPress ? 0 : 1)
                         .clipShape(Circle().offset(y: topG ? 0 : 120))
                         .animation(.easeInOut.speed(0.3), value: topG)
-
+                    
+                    Image(systemName: "checkmark.shield.fill")
+                        .font(.system(size: 60))
+                        .scaleEffect(HPress ? 1 : 0)
 
                 }
                 
