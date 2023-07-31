@@ -18,19 +18,19 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            Color.gray.opacity(0.1)
+            Color.gray.opacity(0.4)
             
             ZStack {
                 Circle()
                     .frame(width: 130, height: 130)
-                    .foregroundColor(.gray.opacity(0.1))
+                    .foregroundColor(.white.opacity(0.2))
                     .shadow(color: .black.opacity(0.1), radius: 10, x: 10, y: 10)
                     .shadow(color: .white.opacity(0.6), radius: 10, x: -20, y: -20)
                 
                 Circle()
                     .stroke(lineWidth: 7)
                     .frame(width: 130, height: 130)
-                    .foregroundColor(Color.gray.opacity(0.1))
+                    .foregroundColor(Color.white.opacity(0.1))
                 
                 Circle()
                     .stroke(lineWidth: 5.5)
@@ -45,6 +45,9 @@ struct ContentView: View {
                         .blur(radius: 3)
                 }
                 ZStack {
+                    
+                }
+                ZStack {
                     Circle()
                         .frame(width: 90, height: 90)
                         .foregroundColor(.white)
@@ -56,13 +59,15 @@ struct ContentView: View {
                 }
                 
             }
-            .gesture(LongPressGesture().updating($topG) {cstate, gstate, transition in
+            .scaleEffect(topG ? 1.2 : 1)
+            .gesture(LongPressGesture(minimumDuration: 1.5, maximumDistance: 1).updating($topG) {cstate, gstate, transition in
                 gstate = cstate
             }
                 .onEnded({ value in
                     HPress.toggle()
                 })
             )
+            .animation(.spring(response: 0.6, dampingFraction: 0.6), value: topG)
         }
         .ignoresSafeArea()
     }
