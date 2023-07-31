@@ -3,7 +3,7 @@
 //  Project: LongPress Button
 //  File: ContentView.swift
 //  Created by: Elaidzha Shchukin
-//  Date:
+//  Date: 31.07.2023
 //
 //  */
 
@@ -76,9 +76,8 @@ struct ContentView: View {
                         .rotation(.degrees(-90))
                 })
                 .animation(.easeInOut.speed(0.3), value: topG)
-                .foregroundColor(.black.opacity(0.7))
+                .foregroundColor(.gray)
 
-                
             }
             .scaleEffect(topG ? 1.2 : 1)
             .gesture(LongPressGesture(minimumDuration: 1.5, maximumDistance: 1).updating($topG) {cstate, gstate, transition in
